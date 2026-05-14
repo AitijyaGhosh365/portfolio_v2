@@ -22,22 +22,42 @@ export default function About() {
       <FadeIn delay={0.2}>
         <div className="mt-10 grid gap-6 text-base leading-relaxed text-muted sm:text-lg">
           <p>
-            I&apos;m an undergraduate at the{" "}
+            I&apos;m <span className="serif text-accent">Aitijya Ghosh</span>{" "}
+            — a 20-year-old CS undergraduate at the{" "}
             <span className="text-foreground">
               Institute of Engineering and Management, Kolkata
             </span>
-            , finishing a CSE degree in 2027 with a 9.24 CGPA. My time splits
-            between coursework, side projects, and a remote engineering role —
-            and honestly, the role is where most of the real learning happens.
+            . I work the{" "}
+            <span className="text-foreground">full stack</span> and lean hard
+            into <span className="text-foreground">AI / ML</span>, but what
+            really pulls me in is the space where code meets{" "}
+            <span className="text-foreground">creativity</span> — problems
+            where the obvious answer isn&apos;t quite right and you have to
+            feel your way to something better.
           </p>
           <p>
-            Outside of work, I lean into{" "}
-            <span className="text-foreground">AI tooling</span> and{" "}
-            <span className="text-foreground">applied ML</span>. Recent
-            obsessions: an LLM-driven candidate evaluation platform, and a
-            fantasy cricket predictor that placed fourth nationally. If a
-            project lets me argue with a model or chase a stubborn bug,
-            I&apos;m probably in.
+            Under the surface, I&apos;ve put in the reps —{" "}
+            <span className="text-foreground">300+ LeetCode problems</span>,
+            well over{" "}
+            <span className="text-foreground">1,000 coding challenges</span>,
+            and a foundation in{" "}
+            <span className="text-foreground">
+              data structures and algorithms
+            </span>{" "}
+            I keep sharpening. I like puzzles that need more than a memorised
+            pattern — the ones where you sit with the problem for a while and
+            earn a cleaner solution.
+          </p>
+          <p>
+            That instinct has carried me through an{" "}
+            <span className="text-foreground">
+              LLM-driven candidate evaluation platform
+            </span>
+            , a <span className="text-foreground">React Native app</span> that
+            lives on the Play Store, and a machine-learning model that placed
+            fourth nationally for IPL fantasy. Different stacks, same itch:
+            build something that didn&apos;t exist yesterday and keep poking
+            at it until it feels right.
           </p>
         </div>
       </FadeIn>
