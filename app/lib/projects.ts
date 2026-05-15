@@ -19,7 +19,7 @@ export const projects: Project[] = [
     tagline: "AI-powered candidate evaluation platform",
     year: "2026",
     stack: ["FastAPI", "React", "Firebase", "LLMs"],
-    links: [{ label: "Live Demo", href: "#" }],
+    links: [{ label: "Live Demo", href: "https://evalitix.vercel.app/" }],
     summary:
       "A full-stack AI system that analyses candidate submissions and returns structured, explainable feedback — built on FastAPI microservices, an LLM-driven scoring pipeline, and a real-time React + Firestore frontend.",
     body: [
@@ -56,7 +56,7 @@ export const projects: Project[] = [
     tagline: "Gamified productivity, shipped to the Play Store",
     year: "2025 — 2026",
     stack: ["React Native", "RevenueCat", "AdMob"],
-    links: [{ label: "Play Store", href: "#" }],
+    links: [{ label: "Play Store", href: "https://play.google.com/store/apps/details?id=com.chilledoutaj.silvo" }],
     summary:
       "A production React Native app that turns task completion into a growing visual jungle. End-to-end ownership: offline-first storage, subscription monetisation, analytics, and the long tail of release polish.",
     body: [
@@ -92,7 +92,7 @@ export const projects: Project[] = [
     tagline: "ML model that placed 4th nationally",
     year: "2025",
     stack: ["Python", "Scikit-learn", "XGBoost", "Pandas"],
-    links: [{ label: "GitHub", href: "#" }],
+    links: [{ label: "GitHub", href: "https://github.com/AitijyaGhosh365/FIFS" }],
     summary:
       "A machine learning pipeline that predicts optimal IPL fantasy line-ups from historical match and player data. Ranked 4th out of 30+ teams in the FIFS All India ML Competition; featured in Waves.",
     body: [
