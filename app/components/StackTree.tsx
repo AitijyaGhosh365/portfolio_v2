@@ -12,6 +12,7 @@ import {
   SiSvelte,
   SiTailwindcss,
   SiFastapi,
+  SiFlask,
   SiNodedotjs,
   SiExpress,
   SiDjango,
@@ -21,12 +22,17 @@ import {
   SiPandas,
   SiNumpy,
   SiMongodb,
+  SiMysql,
+  SiPostgresql,
+  SiSqlite,
+  SiSupabase,
   SiGooglecloud,
   SiSelenium,
   SiKotlin,
 } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import { FaRProject } from "react-icons/fa6";
+import { FaAws } from "react-icons/fa";
 
 type IconCmp = ComponentType<SVGProps<SVGSVGElement>>;
 
@@ -134,6 +140,7 @@ const tree: Branch[] = [
     name: "backend",
     leaves: [
       { name: "FastAPI", Icon: SiFastapi, color: "#009688" },
+      { name: "Flask", Icon: SiFlask, color: "#20201d" },
       { name: "Node.js", Icon: SiNodedotjs, color: "#339933" },
       { name: "Express", Icon: SiExpress, color: "#6d6a62" },
       { name: "Django", Icon: SiDjango, color: "#0C4B33" },
@@ -150,11 +157,21 @@ const tree: Branch[] = [
     ],
   },
   {
-    name: "data-cloud",
+    name: "databases",
     leaves: [
       { name: "MongoDB", Icon: SiMongodb, color: "#47A248" },
+      { name: "PostgreSQL", Icon: SiPostgresql, color: "#4169E1" },
+      { name: "MySQL", Icon: SiMysql, color: "#00618A" },
+      { name: "SQLite", Icon: SiSqlite, color: "#003B57" },
       { name: "Firebase", Icon: FirebaseIcon, color: "#FFCA28" },
+      { name: "Supabase", Icon: SiSupabase, color: "#3ECF8E" },
+    ],
+  },
+  {
+    name: "cloud",
+    leaves: [
       { name: "Google Cloud", Icon: SiGooglecloud, color: "#4285F4" },
+      { name: "AWS", Icon: FaAws, color: "#FF9900" },
     ],
   },
   {

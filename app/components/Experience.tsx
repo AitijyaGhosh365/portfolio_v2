@@ -80,7 +80,7 @@ const roles: Role[] = [
   {
     company: "Silvo Labs",
     role: "React Native Developer",
-    period: "Dec 2024 — Feb 2026",
+    period: "Dec 2025 — Feb 2026",
     location: "Remote",
     href: "#",
     badge: "S",
