@@ -153,8 +153,9 @@ export default function Hero() {
           />
 
           {/* Resume button — opens Drive viewer in a new tab */}
+          
           <motion.a
-            href="https://drive.google.com/file/d/1HwAp7PKeBHGFI_YXrzkswIsrTJ7jHolj/view?usp=sharing"
+            href="https://drive.google.com/file/d/10S46yXcECJTg9bppU7T5RT1Ri-yoOTap/view?usp=sharing"
             target="_blank"
             rel="noreferrer"
             initial={{ opacity: 0, y: 16 }}
