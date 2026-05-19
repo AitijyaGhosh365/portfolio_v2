@@ -116,6 +116,160 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "discloud",
+    title: "Discloud",
+    tagline: "A Discord server as a personal cloud drive",
+    year: "2025",
+    stack: ["FastAPI", "Python", "SQLite", "Discord API"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/AitijyaGhosh365/discloud",
+      },
+    ],
+    summary:
+      "A self-hosted cloud drive that uses a Discord server as its storage backend. Files split into 6 MB chunks, each posted as an attachment in a storage channel; a single 'address' message in a separate channel indexes the whole file. Locally, the only thing I keep is the address message ID — Discord holds the bytes.",
+    body: [
+      {
+        heading: "The premise",
+        paragraphs: [
+          "Discord effectively gives every server unlimited attachment storage for small files. So I asked the obvious question: what if a Discord server were the cloud drive? Files split into chunks, each chunk a message, one tidy index message stitching them together.",
+        ],
+      },
+      {
+        heading: "How it actually works",
+        paragraphs: [
+          "Uploads stream from the browser into FastAPI, get chunked into 6 MB blocks, and each block is POSTed to Discord in parallel via a ThreadPoolExecutor — SHA-256 runs on the producer thread so the hash is ready by the time the last chunk lands. The resulting list of attachment URLs gets packed into a JSON 'address' message in a second channel; that's the only ID stored locally.",
+          "Downloads use a sliding-window fetcher that drains chunks in order into a StreamingResponse. The full file never materialises on the server's disk — it's a continuous pipe from Discord to the browser.",
+        ],
+      },
+      {
+        heading: "Live pipeline feedback",
+        paragraphs: [
+          "While the pipeline works, the server pushes per-chunk events — chunk_started, chunk_received, chunk_yielded — over Server-Sent Events. The frontend renders each chunk as a coloured cell that fills the progress bar in real time, so you can watch the parallelism happen.",
+        ],
+      },
+      {
+        heading: "Why it's interesting",
+        paragraphs: [
+          "Half the fun was the systems-thinking puzzle — bounded producers, sliding-window consumers, in-order drain to a streaming response. The other half was the absurdity of the premise. The result is a working drive with a SQLite metadata table, a Discord server full of chunked binaries, and an architecture that wouldn't survive contact with a real ToS team. Exactly the kind of project I built it to be.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "claude-chat",
+    title: "Claude Chat",
+    tagline: "Self-hosted chat client for the Anthropic API",
+    year: "2026",
+    stack: ["Next.js", "React 19", "Redux Toolkit", "Anthropic API"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/AitijyaGhosh365/claude-chat-with-api",
+      },
+    ],
+    summary:
+      "A streaming Claude client I built because I wanted local control over conversations, files, and model choice. Sessions persist as plain JSON on disk, file uploads flow through the Anthropic Files API, and on thinking-capable models the reasoning streams live alongside the response.",
+    body: [
+      {
+        heading: "Why build it",
+        paragraphs: [
+          "I wanted a chat surface that ran on my own machine, kept conversation history in JSON I could read and back up, and let me swap between Opus, Sonnet, and Haiku without leaving the page. So I built one.",
+        ],
+      },
+      {
+        heading: "Streaming + thinking",
+        paragraphs: [
+          "Chat responses stream over SSE so tokens land as they come. On models that support extended thinking, the reasoning chunks render in a collapsible block above the answer — you can watch the model work before it commits to a reply.",
+        ],
+      },
+      {
+        heading: "Files + sessions",
+        paragraphs: [
+          "Drag-and-drop a file anywhere in the chat area and it's routed through the Anthropic Files API as a typed reference, not a base64 blob. Each conversation persists as its own JSON document, and the first message gets auto-summarised by Haiku into a title so the sidebar reads like a tidy notebook.",
+        ],
+      },
+      {
+        heading: "Shape of it",
+        paragraphs: [
+          "Next.js 15 App Router on the server, Redux Toolkit on the client. The API key never reaches the browser — every model call goes through a server route that holds the secret. About as small as a useful Claude client can reasonably be.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "primetrade-bot",
+    title: "Primetrade Trading Bot",
+    tagline: "Binance Futures Testnet CLI — MARKET, LIMIT, STOP-LIMIT",
+    year: "2025",
+    stack: ["Python", "Binance API", "argparse"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/AitijyaGhosh365/primetrade-binance-api",
+      },
+    ],
+    summary:
+      "A small, structured Python CLI that places MARKET, LIMIT, and STOP-LIMIT orders on the Binance USDT-M Futures Testnet. Built as the take-home for the Primetrade.ai Python Developer application — input validation up front, rotating logs, and clean separation between the API client, order logic, and the CLI surface.",
+    body: [
+      {
+        heading: "What it does",
+        paragraphs: [
+          "Three subcommands — market, limit, stop-limit — each with its own argparse surface for symbol, side, quantity, and prices. Every order is validated locally before it touches the API: bad symbols, wrong sides, non-numeric quantities, all rejected with clear errors and the right exit code.",
+        ],
+      },
+      {
+        heading: "Engineering choices",
+        paragraphs: [
+          "Pinned to the testnet so the code can't accidentally hit production. Order logic, the Binance client wrapper, and validators live in separate modules so each can be tested or replaced in isolation. Every request, response, and error lands in a rotating log file alongside a console summary — the kind of trail you'd want during an audit.",
+        ],
+      },
+      {
+        heading: "Why STOP-LIMIT matters",
+        paragraphs: [
+          "The brief asked for MARKET and LIMIT; STOP-LIMIT was an explicit bonus. I went after it because that's where the real gotchas live — triggers fire on mark price, the limit posts after, and decimal precision rules suddenly start to matter. Implementing it forced a more honest pass over the rest of the codebase.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "phantom-scraper",
+    title: "Phantom Scraper X",
+    tagline: "Authenticated social-media scraper for Smart India Hackathon",
+    year: "2024",
+    stack: ["Python", "Selenium", "JSON"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/AitijyaGhosh365/phantom_scraper_x",
+      },
+    ],
+    summary:
+      "A Selenium-driven scraper that signs in to a real social account in a fresh browser, persists the session, and pulls profile data, posts, replies, DMs, and media into structured JSON. Built for Smart India Hackathon, where the brief required working inside an authenticated session — not the public-page kind of scraping.",
+    body: [
+      {
+        heading: "Why authenticated scraping",
+        paragraphs: [
+          "Public scrapers fall over the moment a target requires login. SIH's problem statement assumed a logged-in operator, so the scraper had to live inside a real authenticated session and survive across runs without re-prompting for credentials.",
+        ],
+      },
+      {
+        heading: "How it works",
+        paragraphs: [
+          "On first launch the scraper opens a real Chrome instance via Selenium and hands the keyboard to the user — credentials never touch the codebase. Once the session lands, cookies are persisted locally; every subsequent run hydrates that cookie jar instead of asking again.",
+          "From there it walks an account's profile, posts, replies, DMs, and media, normalising each into a JSON document. Screenshots are captured throughout so the evidence chain matches the data dump.",
+        ],
+      },
+      {
+        heading: "What I learned",
+        paragraphs: [
+          "Browser automation is unglamorous — half the work is timing waits, handling rate limits, and noticing when a layout silently shifted under you. The reward is a tool that turns the boring half of investigative work from hours into minutes.",
+        ],
+      },
+    ],
+  },
 ];
 
 export const getProject = (slug: string) =>
