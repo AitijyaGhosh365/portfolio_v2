@@ -270,6 +270,47 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "luna",
+    title: "Luna",
+    tagline: "tmux power, zero tmux pain",
+    year: "2026",
+    stack: ["Bun", "React", "Ink", "tmux"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/AitijyaGhosh365/luna",
+      },
+    ],
+    summary:
+      "A keyboard-only launcher that wraps tmux's persistent-session machinery in a UI you can use without ever opening the tmux manual. Arrows to navigate, Enter to open, Esc to detach — luna handles the socket plumbing, live previews, and slot bookkeeping underneath.",
+    body: [
+      {
+        heading: "Why luna",
+        paragraphs: [
+          "tmux is the most powerful terminal multiplexer ever shipped, and its keybindings are why most people don't use it. Luna keeps everything that makes tmux great — persistent sessions, named workspaces, true detach — and throws out the chord-based UX. Arrows and Enter cover ninety percent of what you'd ever do.",
+        ],
+      },
+      {
+        heading: "How it works",
+        paragraphs: [
+          "Each visual slot in the launcher maps to a stable tmux session id on an isolated `tmux -L luna` socket — so Luna can never collide with your existing tmux configs. Press Enter, tmux's display-popup attaches to that session. Press Esc, the popup closes and the session keeps running in the background. Come back tomorrow, hit Enter again, you're right where you left off.",
+        ],
+      },
+      {
+        heading: "Live previews",
+        paragraphs: [
+          "The right pane polls each session once a second via `tmux capture-pane`, so you see the last few lines of output, the current working directory, and the foreground command of every slot without ever attaching. It's the small feature that flips tmux from \"powerful but blind\" to \"powerful and obvious\".",
+        ],
+      },
+      {
+        heading: "Hackable",
+        paragraphs: [
+          "Every tmux command Luna runs lives in one editable `tmux-commands.json` — popup size, detach key, escape-time, history-limit. Bun + React + Ink underneath, so the whole UI is a normal React tree you can read in a single sitting.",
+        ],
+      },
+    ],
+  },
 ];
 
 export const getProject = (slug: string) =>
